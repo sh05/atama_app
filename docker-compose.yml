@@ -1,0 +1,24 @@
+version: "2"
+services:
+  neo4j:
+    image: "neo4j:4.2"
+    volumes:
+      - "./data/:/data"
+      - "./log/:/log"
+      - "./import//var/lib/neo4j/import"
+      - "./plugins/:/plugins"
+    ports:
+      - "7473:7473"
+      - "7474:7474"
+      - "7687:7687"
+    env_file:
+      - neo4j.env
+  pure_notebook:
+    command: /bin/bash -c "jupyter lab --ip=0.0.0.0 --allow-root"
+    image: pure_notebook:3.7
+    volumes:
+      - "./notebooks/:/home/work/"
+    ports:
+      - "8888:8888"
+    env_file:
+      - neo4j.env
