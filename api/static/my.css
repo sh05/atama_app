@@ -1,0 +1,45 @@
+.banana {
+  text-align:center;
+  font-size:4rem;
+}
+.serihu{
+  text-align:center;
+}
+.face {
+  text-align: center;
+  font-size:4rem;
+}
+.my-parts {
+  display: inline-block;
+  width: 100%; 
+  max-width: 100%;
+  background: #fff;
+  border: 2px solid #BDBDBD;
+  border-radius: 0px;
+  padding: .8em;
+  position: relative;
+  text-align: left;
+}
+.my-parts > :last-child {
+  margin-bottom: 0;
+}
+.my-parts::before,
+.my-parts::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+}
+.my-parts::before {
+  margin-left: -12.82px;
+  border: 12.82px solid transparent;
+  border-top: 12.82px solid #BDBDBD;
+  z-index: 1;
+}
+.my-parts::after {
+  margin-left: -10px;
+  border: 10px solid transparent;
+  border-top: 10px solid #FFF;
+  z-index: 2;
+}
+

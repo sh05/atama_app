@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+  </head>
+  <body>
+    <div id="app">
+
+      <!-- ここから -->
+      <v-app>
+        <v-system-bar app class="blue darken-4">
+          <h3>
+          <span class="white--text">
+          頭の良い人と頭の悪い人とあたまのわるいひと
+          </span>
+          </h3>
+        </v-system-bar>
+        <v-main class="blue lighten-4">
+          <v-container fluid height="100%">
+            <v-row class="my-auto" justify="center" align-content="center" >
+              <v-col offset="1" cols=4>
+                <div v-if="url">
+                <img :src="url" class="ma-1" width="80%">
+                </div>
+                <v-form ref="form" id="upload" height=450>
+                  <v-layout row wrap>
+                    <v-flex>
+                      <v-file-input
+                        placeholder="select picture"
+                        prepend-icon="mdi-image"
+                        id="obj"
+                        class="ma-2 white--text"
+                        accept="image/png, image/jpeg, image/jpg"
+                        required
+                      >
+                      </v-file-input>
+                    </v-flex>
+                    <v-flex xs3>
+                      <v-btn
+                        color="blue"
+                        class="ma-2 white--text"
+                        fab
+                        @click="sendImage"
+                      >
+                      <v-icon dark>mdi-upload</v-icon>
+                      </v-btn>
+                    </v-flex>
+                  </v-layout>
+                </v-form>
+              </v-col>
+              <v-col offset="" cols=4>
+                <div class="ma-4" v-for="n in 3" :key="n">
+                  <!-- <div color="blue" outlined tile  height=150> -->
+                  <div class="my-parts">
+                    <div v-for="m in relations[n-1]" :key="n">
+                      <h1 class="banana" v-if="m=='' && url != ''">ば な   な</h1>
+                      <p v-else class="serihu">{{m}}</p>
+                    </div>
+                  </div>
+                 <h1 class="face mt-3 mb-5">{{ faces[n-1] }}</h1>
+                </div>
+              </v-col>
+            </v-row>
+          </v-container>
+        </v-main>
+        <v-footer app class="blue darken-4">
+          <span class="white--text">
+          sh05@github
+          </span>
+        </v-footer>
+    </v-app>
+    <!-- ここまで！ -->
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+    <script src="/static/my.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/my.css">
+</body>
+</html>
