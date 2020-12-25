@@ -1,3 +1,6 @@
 *checkpoint.ipynb
 *.env
 *.pyc
+data/databases/*
+data/dbms/*
+data/transactions/*

@@ -1,6 +1,7 @@
 from typing import List
 from fastapi import FastAPI, UploadFile, File
 from fastapi.staticfiles import StaticFiles
+from detect import detect_obj
 
 app = FastAPI()
 
@@ -11,10 +12,9 @@ app.mount("/static", StaticFiles(directory="/app/static/"), name="static")
 
 @app.post("/lookat")
 async def read_root(obj: UploadFile = File(...)):
-    # image = load_image_into_numpy_array(await file.read())
-    print(obj)
-    # print(image)
+    obj_name = detect_obj(await obj.read())
+    print(obj_name)
     return {
-            "kashiko": ["hello", "konnnitiha"],
-            "warui": [""],
+            "kashiko": [],
+            "warui": [],
             }

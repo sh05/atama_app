@@ -5,14 +5,15 @@ services:
     volumes:
       - "./data/:/data"
       - "./log/:/log"
+      - "./conf/:/conf"
       - "./import//var/lib/neo4j/import"
       - "./plugins/:/plugins"
     ports:
       - "7473:7473"
       - "7474:7474"
       - "7687:7687"
-    # env_file:
-      # - neo4j.env
+    env_file:
+      - neo4j.env
   api:
     command: /bin/bash -c "uvicorn app.main:app --reload --host 0.0.0.0 --port 80"
     build:
@@ -30,5 +31,5 @@ services:
       - "./notebooks/:/home/work/"
     ports:
       - "8888:8888"
-    # env_file:
-      # - neo4j.env
+    env_file:
+      - neo4j.env
